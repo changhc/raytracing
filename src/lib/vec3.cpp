@@ -61,7 +61,7 @@ double Vec3::dot(const Vec3 &other) {
 
 Vec3 Vec3::cross(const Vec3 &other) {
   return Vec3(this->y() * other.z() - this->z() * other.y(),
-              this->x() * other.z() - this->z() * other.x(),
+              this->z() * other.x() - this->x() * other.z(),
               this->x() * other.y() - this->y() * other.x());
 }
 
