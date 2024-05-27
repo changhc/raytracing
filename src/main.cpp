@@ -23,7 +23,7 @@ int main() {
     for (int i = 0; i < image_width; i++) {
       auto c = Colour(double(i) / (image_width - 1),
                       double(j) / (image_height - 1), 0.0);
-      WriteColour(std::cout, c);
+      WriteColour(s, c);
     }
   }
   s.close();
