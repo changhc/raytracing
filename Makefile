@@ -9,12 +9,12 @@ CFLAGS=-I$(src) -Wall
 TEST = $(patsubst %, ./tests/test_%.cpp, $(_MODEL))
 
 build:
-	$(CC) src/main.cpp -o main
+	$(CC) src/main.cpp -o main $(CFLAGS)
 
 format:
 	find . -iname '*.h' -o -iname '*.cpp' | xargs clang-format -i
 
-run:
+run: build
 	rm img.ppm || true
 	./main
 
