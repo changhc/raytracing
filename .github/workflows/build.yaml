@@ -14,7 +14,7 @@ jobs:
       run: cmake -S $GITHUB_WORKSPACE -B ${{runner.workspace}}/build
 
     - name: Test
-      working-directory: ${{runner.workspace}}/build
+      working-directory: ${{runner.workspace}}
       run: GTEST_OUTPUT=xml:test-results/ GTEST_COLOR=1 make test
 
     - name: Upload test results
