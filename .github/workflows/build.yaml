@@ -10,16 +10,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Configure CMake
-      run: cmake -S $GITHUB_WORKSPACE -B ${{runner.workspace}}/build
-
     - name: Test
-      working-directory: ${{runner.workspace}}/build
-      run: GTEST_OUTPUT=xml:test-results/ GTEST_COLOR=1 make build && make test
+      run: GTEST_OUTPUT=xml:build/test-results/ GTEST_COLOR=1 make test
 
     - name: Upload test results
       uses: actions/upload-artifact@v2
       if: failure()
       with:
         name: test_results_xml
-        path: ${{runner.workspace}}/build/test-results/**/*.xml
+        path: build/test-results/**/*.xml
