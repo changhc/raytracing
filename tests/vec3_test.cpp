@@ -1,84 +1,83 @@
-#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include "doctest.h"
+#include <gtest/gtest.h>
 
 #include "../src/lib/vec3.h"
 
-TEST_CASE("Vec3 initialiser") {
+TEST(Vec3Test, Initialiser) {
   Vec3 v(1.0, 2.0, 3.0);
-  REQUIRE(v.x() == 1.0);
+  EXPECT_EQ(v.x(), 1.0);
 }
 
-TEST_CASE("Vec3 +") {
+TEST(Vec3Test, PlusOperator) {
   Vec3 v(1.0, 2.0, 3.0);
   Vec3 s = v + v;
-  REQUIRE(s.x() == 2.0);
-  REQUIRE(s.y() == 4.0);
-  REQUIRE(s.z() == 6.0);
+  EXPECT_EQ(s.x(), 2.0);
+  EXPECT_EQ(s.y(), 4.0);
+  EXPECT_EQ(s.z(), 6.0);
 
   s += v;
-  REQUIRE(s.x() == 3.0);
-  REQUIRE(s.y() == 6.0);
-  REQUIRE(s.z() == 9.0);
+  EXPECT_EQ(s.x(), 3.0);
+  EXPECT_EQ(s.y(), 6.0);
+  EXPECT_EQ(s.z(), 9.0);
 }
 
-TEST_CASE("Vec3 -") {
+TEST(Vec3Test, MinusOperator) {
   Vec3 v(1.0, 2.0, 3.0);
   Vec3 s = v - v;
-  REQUIRE(s.x() == 0.0);
-  REQUIRE(s.y() == 0.0);
-  REQUIRE(s.z() == 0.0);
+  EXPECT_EQ(s.x(), 0.0);
+  EXPECT_EQ(s.y(), 0.0);
+  EXPECT_EQ(s.z(), 0.0);
 
   s -= v;
-  REQUIRE(s.x() == -1.0);
-  REQUIRE(s.y() == -2.0);
-  REQUIRE(s.z() == -3.0);
+  EXPECT_EQ(s.x(), -1.0);
+  EXPECT_EQ(s.y(), -2.0);
+  EXPECT_EQ(s.z(), -3.0);
 
   v = -v;
-  REQUIRE(v.x() == -1.0);
-  REQUIRE(v.y() == -2.0);
-  REQUIRE(v.z() == -3.0);
+  EXPECT_EQ(v.x(), -1.0);
+  EXPECT_EQ(v.y(), -2.0);
+  EXPECT_EQ(v.z(), -3.0);
 }
 
-TEST_CASE("Vec3 *") {
+TEST(Vec3Test, MultiplyOperator) {
   Vec3 v(1.0, 2.0, 3.0);
   Vec3 s = v * 1.5;
-  REQUIRE(s.x() == 1.5);
-  REQUIRE(s.y() == 3.0);
-  REQUIRE(s.z() == 4.5);
+  EXPECT_EQ(s.x(), 1.5);
+  EXPECT_EQ(s.y(), 3.0);
+  EXPECT_EQ(s.z(), 4.5);
 
   v *= 1.5;
-  REQUIRE(v.x() == 1.5);
-  REQUIRE(v.y() == 3.0);
-  REQUIRE(v.z() == 4.5);
+  EXPECT_EQ(v.x(), 1.5);
+  EXPECT_EQ(v.y(), 3.0);
+  EXPECT_EQ(v.z(), 4.5);
 }
 
-TEST_CASE("Vec3 /") {
+TEST(Vec3Test, DivideOperator) {
   Vec3 v(2.0, 4.0, 6.0);
   Vec3 s = v / 2.0;
-  REQUIRE(s.x() == 1.0);
-  REQUIRE(s.y() == 2.0);
-  REQUIRE(s.z() == 3.0);
+  EXPECT_EQ(s.x(), 1.0);
+  EXPECT_EQ(s.y(), 2.0);
+  EXPECT_EQ(s.z(), 3.0);
 
   v /= 2.0;
-  REQUIRE(v.x() == 1.0);
-  REQUIRE(v.y() == 2.0);
-  REQUIRE(v.z() == 3.0);
+  EXPECT_EQ(v.x(), 1.0);
+  EXPECT_EQ(v.y(), 2.0);
+  EXPECT_EQ(v.z(), 3.0);
 }
 
-TEST_CASE("Vec3 norm") {
+TEST(Vec3Test, Norm) {
   Vec3 v(1.0, 2.0, 2.0);
-  REQUIRE(v.norm() == 3.0);
+  EXPECT_EQ(v.norm(), 3.0);
 }
 
-TEST_CASE("Vec3 dot") {
+TEST(Vec3Test, Dot) {
   Vec3 v(1.0, 2.0, 2.0);
-  REQUIRE(v.dot(v) == 9.0);
+  EXPECT_EQ(v.dot(v), 9.0);
 }
 
-TEST_CASE("Vec3 cross") {
+TEST(Vec3Test, Cross) {
   Vec3 u(1.0, 2.0, 3.0), v(4.0, 5.0, 6.0);
   Vec3 c = u.cross(v);
-  REQUIRE(c.x() == -3.0);
-  REQUIRE(c.y() == 6.0);
-  REQUIRE(c.z() == -3.0);
+  EXPECT_EQ(c.x(), -3.0);
+  EXPECT_EQ(c.y(), 6.0);
+  EXPECT_EQ(c.z(), -3.0);
 }
