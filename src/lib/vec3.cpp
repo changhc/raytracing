@@ -7,9 +7,9 @@ double Vec3::y() const { return e[1]; }
 
 double Vec3::z() const { return e[2]; }
 
-Vec3 Vec3::operator-() { return Vec3(-e[0], -e[1], -e[2]); }
+Vec3 Vec3::operator-() const { return Vec3(-e[0], -e[1], -e[2]); }
 
-Vec3 Vec3::operator-(const Vec3 &other) {
+Vec3 Vec3::operator-(const Vec3 &other) const {
   return Vec3(this->x() - other.x(), this->y() - other.y(),
               this->z() - other.z());
 }
@@ -21,7 +21,7 @@ Vec3 &Vec3::operator-=(const Vec3 &other) {
   return *this;
 }
 
-Vec3 Vec3::operator+(const Vec3 &other) {
+Vec3 Vec3::operator+(const Vec3 &other) const {
   return Vec3(this->x() + other.x(), this->y() + other.y(),
               this->z() + other.z());
 }
@@ -33,7 +33,7 @@ Vec3 &Vec3::operator+=(const Vec3 &other) {
   return *this;
 }
 
-Vec3 Vec3::operator*(double s) {
+Vec3 Vec3::operator*(double s) const {
   return Vec3(this->x() * s, this->y() * s, this->z() * s);
 }
 
@@ -44,7 +44,7 @@ Vec3 &Vec3::operator*=(double s) {
   return *this;
 }
 
-Vec3 Vec3::operator/(double s) {
+Vec3 Vec3::operator/(double s) const {
   return Vec3(this->x() / s, this->y() / s, this->z() / s);
 }
 
@@ -55,17 +55,28 @@ Vec3 &Vec3::operator/=(double s) {
   return *this;
 }
 
-double Vec3::dot(const Vec3 &other) {
+double Vec3::dot(const Vec3 &other) const {
   return this->x() * other.x() + this->y() * other.y() + this->z() * other.z();
 }
 
-Vec3 Vec3::cross(const Vec3 &other) {
+Vec3 Vec3::cross(const Vec3 &other) const {
   return Vec3(this->y() * other.z() - this->z() * other.y(),
               this->z() * other.x() - this->x() * other.z(),
               this->x() * other.y() - this->y() * other.x());
 }
 
 double Vec3::norm() const {
-  return std::sqrt(this->x() * this->x() + this->y() * this->y() +
-                   this->z() * this->z());
+  return sqrt(this->x() * this->x() + this->y() * this->y() +
+              this->z() * this->z());
 }
+
+/* Overload RHS operators */
+Vec3 operator*(double s, const Vec3 &rhs) { return rhs * s; }
+
+Vec3 operator*(int s, const Vec3 &rhs) { return rhs * s; }
+
+bool operator==(const Vec3 &lhs, const Vec3 &rhs) {
+  return lhs.x() == rhs.x() && lhs.y() == rhs.y() && lhs.z() == rhs.z();
+}
+
+Vec3 unit_vector(const Vec3 &dir) { return dir / dir.norm(); }

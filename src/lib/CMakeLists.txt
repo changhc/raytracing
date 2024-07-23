@@ -6,6 +6,7 @@ target_sources(lib
   PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}/vec3.h
 	${CMAKE_CURRENT_LIST_DIR}/colour.h
+	${CMAKE_CURRENT_LIST_DIR}/ray.h
   )
 
 target_include_directories(lib

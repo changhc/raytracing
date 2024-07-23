@@ -11,18 +11,24 @@ public:
   double y() const;
   double z() const;
 
-  Vec3 operator-();
+  Vec3 operator-() const;
   Vec3 &operator+=(const Vec3 &other);
-  Vec3 operator+(const Vec3 &other);
-  Vec3 operator-(const Vec3 &other);
+  Vec3 operator+(const Vec3 &other) const;
+  Vec3 operator-(const Vec3 &other) const;
   Vec3 &operator-=(const Vec3 &other);
-  Vec3 operator*(double s);
+  Vec3 operator*(double s) const;
   Vec3 &operator*=(double s);
-  Vec3 operator/(double s);
+  Vec3 operator/(double s) const;
   Vec3 &operator/=(double s);
-  double dot(const Vec3 &other);
-  Vec3 cross(const Vec3 &other);
+  double dot(const Vec3 &other) const;
+  Vec3 cross(const Vec3 &other) const;
   double norm() const;
 };
+
+/* Overload RHS operators */
+Vec3 operator*(double s, const Vec3 &rhs);
+Vec3 operator*(int s, const Vec3 &rhs);
+bool operator==(const Vec3 &lhs, const Vec3 &rhs);
+Vec3 unit_vector(const Vec3 &dir);
 
 #endif

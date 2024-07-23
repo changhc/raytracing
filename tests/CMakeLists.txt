@@ -8,6 +8,7 @@ FetchContent_MakeAvailable(googletest)
 add_executable(
   unittest
   vec3_test.cpp
+  ray_test.cpp
 )
 
 target_link_libraries(unittest lib)
