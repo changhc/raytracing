@@ -79,4 +79,4 @@ bool operator==(const Vec3 &lhs, const Vec3 &rhs) {
   return lhs.x() == rhs.x() && lhs.y() == rhs.y() && lhs.z() == rhs.z();
 }
 
-Vec3 unit_vector(const Vec3 &dir) { return dir / dir.norm(); }
+Vec3 UnitVector(const Vec3 &dir) { return dir / dir.norm(); }

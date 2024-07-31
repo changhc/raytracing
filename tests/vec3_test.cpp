@@ -89,7 +89,7 @@ TEST(Vec3Test, Cross) {
 
 TEST(Vec3Test, UnitVector) {
   Vec3 u(2.0, 0.0, 0.0);
-  Vec3 c = unit_vector(u);
+  Vec3 c = UnitVector(u);
   EXPECT_EQ(c.x(), 1.0);
   EXPECT_EQ(c.y(), 0.0);
   EXPECT_EQ(c.z(), 0.0);

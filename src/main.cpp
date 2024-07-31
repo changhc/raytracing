@@ -3,8 +3,8 @@
 #include <fstream>
 #include <iostream>
 
-Colour ray_color(const Ray &r) {
-  Vec3 unit_direction = unit_vector(r.direction());
+Colour RayColor(const Ray &r) {
+  Vec3 unit_direction = UnitVector(r.direction());
   auto a = 0.5 * (unit_direction.y() + 1.0);
   return (1.0 - a) * Colour(1.0, 1.0, 1.0) + a * Colour(0.5, 0.7, 1.0);
 }
@@ -59,7 +59,7 @@ int main() {
       auto ray_direction = pixel_center - camera_center;
       Ray r(camera_center, ray_direction);
 
-      Colour pixel_color = ray_color(r);
+      Colour pixel_color = RayColor(r);
       WriteColour(s, pixel_color);
     }
   }
