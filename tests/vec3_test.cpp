@@ -45,6 +45,11 @@ TEST(Vec3Test, MultiplyOperator) {
   EXPECT_EQ(s.y(), 3.0);
   EXPECT_EQ(s.z(), 4.5);
 
+  Vec3 t = 1.5 * v;
+  EXPECT_EQ(s.x(), t.x());
+  EXPECT_EQ(s.y(), t.y());
+  EXPECT_EQ(s.z(), t.z());
+
   v *= 1.5;
   EXPECT_EQ(v.x(), 1.5);
   EXPECT_EQ(v.y(), 3.0);
@@ -80,4 +85,12 @@ TEST(Vec3Test, Cross) {
   EXPECT_EQ(c.x(), -3.0);
   EXPECT_EQ(c.y(), 6.0);
   EXPECT_EQ(c.z(), -3.0);
+}
+
+TEST(Vec3Test, UnitVector) {
+  Vec3 u(2.0, 0.0, 0.0);
+  Vec3 c = UnitVector(u);
+  EXPECT_EQ(c.x(), 1.0);
+  EXPECT_EQ(c.y(), 0.0);
+  EXPECT_EQ(c.z(), 0.0);
 }
